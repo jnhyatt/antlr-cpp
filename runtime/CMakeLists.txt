@@ -10,14 +10,15 @@ file(GLOB ANTLR4_SOURCES
   "${CMAKE_CURRENT_SOURCE_DIR}/src/tree/xpath/*.cpp"
 )
 
-add_library(antlr4 STATIC ${ANTLR4_SOURCES})
+add_library(runtime STATIC ${ANTLR4_SOURCES})
+add_library(antlr4::runtime ALIAS runtime)
 
-target_compile_definitions(antlr4
+target_compile_definitions(runtime
     PUBLIC
         ANTLR4CPP_STATIC
 )
 
-target_include_directories(antlr4
+target_include_directories(runtime
     PUBLIC
         ${PROJECT_SOURCE_DIR}/runtime/src
         ${PROJECT_SOURCE_DIR}/runtime/src/atn
